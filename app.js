@@ -1,16 +1,17 @@
 const express = require('express') // Import express 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const clientRoute = require('./routes/client')
+const app = express()
 dotenv.config(); 
+
 
 //require('dotenv').config()
 
 
+// routes communication to routes folder
+app.use("/api", clientRoute);
 
-const app = express() 
-app.get('/', (req, res) => {
-    res.send("Hello World");
-}); 
 
 const portAccess = process.env.PORT || 8000
 
@@ -18,6 +19,8 @@ app.listen(portAccess, () => {
     console.log(`Server on port ${portAccess}`);
 })
 
+
+// mongodb connection
 mongoose.connect(
     process.env.MONGO_URI,
     {useNewUrlParser: true}
