@@ -1,5 +1,8 @@
 const express = require('express') // Import express 
 const mongoose = require('mongoose');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const cookies = require('cookie-parser');
 const dotenv = require('dotenv');
 const clientRoute = require('./routes/client')
 const app = express()
@@ -8,6 +11,9 @@ dotenv.config();
 
 //require('dotenv').config()
 
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+app.use(cookies());
 
 // routes communication to routes folder
 app.use("/api", clientRoute);
