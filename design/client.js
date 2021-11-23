@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const crypto = require('crypto') // hash password, library from node.js
-const id = require('uuid/v1')
+//const id = require('uuid/v1')
 
 const clientSchema = new mongoose.Schema({
     name : {
