@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const crypto = require('crypto') // hash password, library from node.js
+const crypto = require('crypto'); // hash password, library from node.js
+const { PassThrough } = require('stream');
 //const id = require('uuid/v1')
 
 const clientSchema = new mongoose.Schema({
@@ -55,6 +56,11 @@ const clientSchema = new mongoose.Schema({
 //     return this._password
 // })
 
+clientSchema.methods = {
+    compare: function(pass){
+        return pass === this.password;
+    }
+}
 
 // clientSchema.methods = {
 //     encryptPassword: function(password){
