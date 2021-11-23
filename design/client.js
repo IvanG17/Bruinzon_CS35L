@@ -18,6 +18,8 @@ const clientSchema = new mongoose.Schema({
     password : {
         type : String, 
         required : true, 
+        trim : true, 
+        maxlength : 64
 
 
     }, 
@@ -40,3 +42,33 @@ const clientSchema = new mongoose.Schema({
 
     
 },  {timestamps: true});
+
+// hashed password
+
+// clientSchema.virtual('password')
+// .set(function(password){
+//     this._password = password
+//     this.hashing = uuidv1()
+//     this.hashed_password = this.encryptPassword(password)
+// })
+// .get(function(){
+//     return this._password
+// })
+
+
+// clientSchema.methods = {
+//     encryptPassword: function(password){
+//         if (!password){
+//             return ''; 
+//         }
+//         try{
+//             return crypto.createHmac('sha1', this.hashing)
+//                         .update(password)
+//                         .digest('hex')
+//         } catch (err){
+//             return  ''; 
+//         }
+//     }
+// }
+
+module.exports = mongoose.model("Client", clientSchema)
