@@ -35,9 +35,9 @@ exports.signin = (req, res) => {
             });
         }
 
-        // if (!customer.authenticate(password)){
-        //     return res.status(401).json({error : "Wrong password"})
-        // }
+        if (!customer.compare(password)){
+            return res.status(401).json({error : "Wrong password"})
+        }
     
 
         const token = jwt.sign({_id: customer._id}, process.env.JWT_ID);
