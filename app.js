@@ -5,15 +5,20 @@ const bodyParser = require('body-parser');
 const cookies = require('cookie-parser');
 const dotenv = require('dotenv');
 const clientRoute = require('./routes/client')
+const validator = require('express-validator')
+
+
 const app = express()
+
 dotenv.config(); 
 
 
 //require('dotenv').config()
 
-app.use(morgan('dev'))
-app.use(bodyParser.json())
+app.use(morgan('dev'));
+app.use(bodyParser.json());
 app.use(cookies());
+app.use(validator());
 
 // routes communication to routes folder
 app.use("/api", clientRoute);
