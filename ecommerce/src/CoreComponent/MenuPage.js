@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
-        return {color: '#ddbb22'}
+        return {color: '#000000'}
     } else {
         return {color: '#ffffff'}
     }
@@ -30,7 +30,7 @@ const MenuPage = ({history}) => {
 export default withRouter(MenuPage);
 
 
-/* Old code with Davi's new versions down here */
+/* Old code with David's new versions down here */
 
 /*
 export default function MenuPage() {
