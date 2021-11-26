@@ -4,9 +4,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookies = require('cookie-parser');
 const dotenv = require('dotenv');
-const clientRoute = require('./routes/client')
+const clientRouteAuth = require('./routes/authentication')
 const validator = require('express-validator')
-
 
 const app = express()
 
@@ -21,7 +20,7 @@ app.use(cookies());
 app.use(validator());
 
 // routes communication to routes folder
-app.use("/api", clientRoute);
+app.use("/api", clientRouteAuth);
 
 
 const portAccess = process.env.PORT || 8000
