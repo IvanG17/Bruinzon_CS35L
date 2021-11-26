@@ -19,12 +19,9 @@ exports.signup = (req, res) => {
     });
 };
 
-// exports.trial = (req, res) => {
-//     res.json({message: "hello"}); 
-// };
-
-
-
+exports.trial = (req, res) => {
+    res.json({message: "hello"});
+};
 
 exports.signin = (req, res) => {
     const {email, password} = req.body
@@ -46,4 +43,9 @@ exports.signin = (req, res) => {
         const {_id, name, email, role} = customer;
         return res.json({token, customer: {_id, email , name , role}});
     });
+};
+
+exports.signout = (req,res) => {
+    res.clearCookie('token');
+    res.json({message:'User successfully signed out'});
 };
