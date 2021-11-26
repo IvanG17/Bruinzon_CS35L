@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import UserSignUp from './UserComponent/UserSignUp'
 import UserSignIn from './UserComponent/UserSignIn'
 import HomePage from './CoreComponent/HomePage'
@@ -7,14 +7,13 @@ import MenuPage from './CoreComponent/MenuPage'
 
 const Routing  = () => {
     return (<div>
-        <Router>
-            <MenuPage/>
-            <Routes>
-                <Route path="/" exact element={<HomePage/>}/>
-                <Route path="/signin" exact element={<UserSignIn/>}/>
-                <Route path="/signup" exact element={<UserSignUp/>}/>
-            </Routes>
-        </Router>
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/signin" exact component={UserSignIn} />
+                <Route path="/signup" exact component={UserSignUp} />
+            </Switch>
+        </BrowserRouter>
     </div>)
 }
 
