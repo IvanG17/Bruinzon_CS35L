@@ -1,3 +1,3 @@
 # Bruinzon_CS35L
 
-Preparing for backend changes. Watch this space.
+Set up JWT to work, some commands can only work when authenticated.

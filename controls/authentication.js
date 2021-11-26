@@ -1,4 +1,4 @@
-const client = require('../design/client');
+const client = require('../design/userdata');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 const { errorHandler } = require('../design/error_handling')
@@ -8,9 +8,6 @@ exports.signup = (req, res) => {
     const customer = new client(req.body)
     customer.save((err, customer) => {
         if (err){
-            //return res.status(400).json({err});
-            //console.log("fail")
-           // return res.status(400).json({err: errorHandler(err)});
            return res.status(400).json({err});
         }
         res.json({
@@ -37,7 +34,7 @@ exports.signin = (req, res) => {
         }
     
 
-        const token = jwt.sign({_id: customer._id}, process.env.JWT_ID);
+        const token = jwt.sign({_id: customer._id}, process.env.JWT_SECRET);
         res.cookie('token', token, {expire: new Date() + 9999})
 
         const {_id, name, email, role} = customer;
@@ -50,7 +47,7 @@ exports.signout = (req,res) => {
     res.json({message:'User successfully signed out'});
 };
 
-const secretstring = process.env.JWT_SECRET || 'A7463DD5C61D08A392D833375E224C8683B8570DC83D086C9A75354D15FCB181';
+const secretstring = process.env.JWT_SECRET || 'abc';
 exports.signinrequired = expressJwt({
         secret: secretstring,
         algorithms: ['HS256'],

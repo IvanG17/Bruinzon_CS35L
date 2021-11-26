@@ -11,11 +11,15 @@ const {signupValidator} = require('../design/validator');
 //const {trial} = require('../controls/client');
 
 //router.get("/",trial )
-router.post('/signout', signout)
+router.get('/signout', signout)
 router.post('/signup', signupValidator, signup);
 router.post('/signin', signin);
-// router.get('/hello', signupValidator, hello) --> only works for signed in users
+
+/*
+//router.get('/hello', signupValidator, hello) --> only works for signed in users
 router.get('/hello', signinrequired, (req,res) => {
       res.send('hello there')
 });
+ */
+
 module.exports = router; 

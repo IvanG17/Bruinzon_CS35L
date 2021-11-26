@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cookies = require('cookie-parser');
 const dotenv = require('dotenv');
 const clientRouteAuth = require('./routes/authentication')
+const userRouteAuth = require('./routes/userdata')
 const validator = require('express-validator')
 
 const app = express()
@@ -21,6 +22,7 @@ app.use(validator());
 
 // routes communication to routes folder
 app.use("/api", clientRouteAuth);
+app.use("/api", userRouteAuth);
 
 
 const portAccess = process.env.PORT || 8000
@@ -36,9 +38,6 @@ mongoose.connect(
     {useNewUrlParser: true}
   )
   .then(() => console.log('DB Connected'))
-
-
-  
 
 
   mongoose.connection.on('error', err => {
