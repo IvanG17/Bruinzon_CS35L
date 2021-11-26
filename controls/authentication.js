@@ -54,3 +54,19 @@ exports.signinrequired = expressJwt({
         userProperty: 'auth'
     }
 );
+
+exports.isValidAuthUser = (req,res,next) => {
+    let check = req.profile && req.auth && req.profile._id == req.auth._id;
+    if (!check) {
+        return res.status(403).json({error:'You are not authorised to view this!'});
+    }
+    next();
+};
+
+exports.isValidAdminUser = (req,res,next) => {
+    if (req.profile.role === 0) {
+        return res.status(403).json({error:'Not a valid admin user, access denied'});
+    }
+    next();
+};
+
