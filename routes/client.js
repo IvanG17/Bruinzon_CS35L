@@ -9,7 +9,7 @@ const {signupValidator} = require('../design/validator');
 const {trial} = require('../controls/client');
 
 //router.get("/",trial )
-router.post('/signout', signout)
+router.get('/signout', signout)
 router.post('/signup', signupValidator, signup);
 router.post('/signin', signin);
 module.exports = router; 
