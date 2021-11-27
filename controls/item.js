@@ -139,5 +139,62 @@ exports.write = (req, res) => {
 
     });
 
-
 };
+
+/*
+Sort and return the products based on different parameters
+Sort by the popular products: products?sortwith=numberSold&order=desc&max=4
+Sort by the newest products: products?sortwith=createdAt&order=desc&max=4
+If there are no other parameters, so return all parameters ordered by id
+ */
+
+exports.listItems = (req,res) => {
+
+    let order = req.query.order ? req.query.order : 'asc';
+    let sortwith = req.query.sortwith ? req.query.sortwith : '_id';
+    let max = req.query.max ? parseInt(req.query.max) : 6;
+
+    Item.find()
+        .select("-photo") // We don't want to return the photos, huge file size
+        .populate('productType')
+        .sort([[sortwith, order]])
+        .limit(max)
+        .exec((err,data) => {
+            if (err) {
+                return res.status(400).json({error:"Items not found"})
+            }
+            res.json(data)
+        })
+
+}
+
+exports.listRelated = (req,res) => {
+
+    let max = req.query.max ? parseInt(req.query.max) : 4;
+
+    Item.find({_id: { $ne: req.item._id}, productType: req.item.productType})
+        .select("-photo")
+        .limit(max)
+        .populate('productType', '_id name')
+        .exec((err,data) => {
+            if (err) {
+                return res.status(400).json({error:"Items not found"})
+            }
+            res.json(data)
+        })
+
+}
+
+exports.listProductTypes = (req,res) => {
+
+    Item.distinct("productType",{}, (err,data) => {
+        if (err) {
+            return res.status(400).json({error:"Items not found"})
+        }
+        res.json(data)
+    })
+
+}
+
+
+

@@ -26,7 +26,11 @@ const itemSchema = new mongoose.Schema({
     }, 
     quantity : {
        type : Number
-    }, 
+    },
+    numberSold : {
+        type : Number,
+        default : 0
+    },
     photo : {
         data : Buffer, 
         contentType: String

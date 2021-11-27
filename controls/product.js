@@ -1,9 +1,7 @@
+const mongoose = require('mongoose')
 const Product = require('../design/product');
+const Item = require('../design/item')
 const { errorHandler } = require('../design/error_handling')
-
-
-
-
 
 exports.create = (req, res) => {
     const product = new Product(req.body)
@@ -12,11 +10,8 @@ exports.create = (req, res) => {
             return res.status(400).json({
                 error: errorHandler(err)
             });
-
-
         }
         res.json({name});
-
     })
 }
 
