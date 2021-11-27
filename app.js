@@ -3,7 +3,12 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookies = require('cookie-parser');
-const cors = retuire('cors')
+const cors = require('cors');
+/*const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}*/
 const dotenv = require('dotenv');
 const clientRouteAuth = require('./routes/authentication')
 const userRouteAuth = require('./routes/userdata')

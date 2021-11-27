@@ -12,7 +12,7 @@ const UserSignUp = () => {
         password:'',
         error:'',
         success: false
-    });
+    }); 
 
     const {name, email, password, success, error} = values;
 
@@ -28,7 +28,7 @@ const UserSignUp = () => {
         event.preventDefault();
         setValues({...values, error:false})
         signup({name, email, password})
-        /*.then(data => {
+        .then(data => {
             if(data.error){
                 setValues({...values, error: data.error, success: false})
             } else{
@@ -42,7 +42,7 @@ const UserSignUp = () => {
                 })
             }
 
-        })*/
+        })
     }
 
 
