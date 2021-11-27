@@ -2,6 +2,9 @@ const Product = require('../design/product');
 const { errorHandler } = require('../design/error_handling')
 
 
+
+
+
 exports.create = (req, res) => {
     const product = new Product(req.body)
     product.save((err, name) =>{
@@ -15,6 +18,56 @@ exports.create = (req, res) => {
         res.json({name});
 
     })
+}
+
+exports.read = (req, res) => {
+    return res.json(req.product)
+}
+
+exports.write = (req, res) =>{
+    let prod = req.product
+    prod.name = req.body.name
+
+    prod.save((err, prodName) => {
+        if (err){
+            return res.status(400).json({
+                error : "Error with product"
+            });
+        }
+        res.json(prodName)
+
+    });
+
+};
+
+exports.del= (req, res) =>{
+
+    let prod = req.product
+
+
+    prod.remove((err, prodName) => {
+        if (err){
+            return res.status(400).json({
+                error : "Error with removal"
+            });
+        }
+        res.json({ removal : "Success"});
+
+    });
+    
+}
+
+exports.all= (req, res) =>{
+    Product.find().exec((err, prodName) => {
+        if (err){
+            return res.status(400).json({
+                error : "Error with returning"
+            });
+        }
+        res.json(prodName)
+
+    })
+    
 }
 
 
@@ -35,6 +88,3 @@ exports.findProduct = (req, res, next, objID) => {
 }
 
 
-exports.read = (req, res) => {
-    return res.json(req.product)
-}
