@@ -1,5 +1,4 @@
 # Bruinzon_CS35L
 
-This branch is for Matthew doing his frontend work, while David and Ivan are enjoying an actual life for thanksgiving.
-
-Test: Matthew editing frontend read me rn.
+Updated frontend:
+To properly run Bruinzon first cd into main bruinzon directory and do "node app". Then cd into the ecommerce directory and run "npm start"
