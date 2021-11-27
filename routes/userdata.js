@@ -8,7 +8,7 @@ const {isValidAdminUser} = require('../controls/authentication'); // Use to rest
 
 
 router.param('userID',findUser);
-router.get("/userdata/:userID", signinrequired, isValidAuthUser, (req,res) => {
+router.get("/userdata/:userID", signinrequired, isValidAdminUser, (req,res) => {
         res.json({
             userdata: req.profile
         })
