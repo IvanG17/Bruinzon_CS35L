@@ -4,6 +4,28 @@ const fs = require('fs')
 const Item = require('../design/item');
 const { errorHandler } = require('../design/error_handling')
 
+exports.findItem = (req, res, next, id) => {
+    Item.findById(id).exec((err, item) =>{
+        if (err){
+            return res.status(400).json({
+                error: "Error finding item" 
+            });
+        } else if (!item){
+            return res.status(400).json({
+                error: "Item does not exist"
+            });
+        }
+
+        req.item = item;
+        next(); 
+    });
+};
+
+exports.read = (req, res) => {
+    req.item.photo = undefined; 
+    return res.json(req.item)
+}
+
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm() 
     form.keepExtensions = true 
