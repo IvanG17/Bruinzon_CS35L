@@ -14,8 +14,23 @@ const isActive = (history, path) => {
 const MenuPage = ({history}) => {
     return (<div>
         <ul className = "nav nav-tabs bg-primary">
+
+
             <li className = "nav-item" >
-                <Link className="nav-link" style = {isActive(history, '/')} to="/">Home</Link>
+                <Link className="nav-link"
+                      style = {isActive(history, '/')}
+                      to="/">
+                    Home
+                </Link>
+            </li>
+
+            <li className = "nav-item" >
+                <Link className="nav-link"
+                      style = {isActive(history, '/dashboard')}
+                      to="/dashboard"
+                >
+                    Dashboard
+                </Link>
             </li>
 
             {!isAuthenticated() && (
