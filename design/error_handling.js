@@ -30,7 +30,7 @@ const uniqueMessage = error => {
 
 exports.errorHandler = error => {
     let m = "";
-    if (err.code){
+    if (error.code){
         if (error.code === 11000 || err.code === 11001){
             m = uniqueMessage(error)
         }
@@ -38,9 +38,9 @@ exports.errorHandler = error => {
             m= "Error";
         }
     } else{
-        for (let error in error.errorors){
-            if (error.errorors[errorName].m){
-                m = error.errorors[errorName].m;
+        for (let error in error.errors){
+            if (error.errors[errorName].m){
+                m = error.errors[errorName].m;
             }
              
         }
