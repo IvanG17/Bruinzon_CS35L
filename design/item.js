@@ -27,7 +27,7 @@ const itemSchema = new mongoose.Schema({
     quantity : {
        type : Number
     }, 
-    image : {
+    photo : {
         data : Buffer, 
         contentType: String
     },
