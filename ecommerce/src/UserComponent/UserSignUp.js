@@ -14,23 +14,24 @@ const UserSignUp = () => {
         success: false
     });
 
-    const {name, email, password, success, error} = values
+    const {name, email, password, success, error} = values;
 
     const handleChange = name => event =>{
-        setValues({...values, error:false,
+        setValues({...values, 
+            error:false,
             [name]:event.target.value})
     }
 
     
     
-    const clickSubmit = (event) => {
-        event.preventDefault()
+    const clickSubmit = event => {
+        event.preventDefault();
         setValues({...values, error:false})
         signup({name, email, password})
-        .then(data => {
+        /*.then(data => {
             if(data.error){
-                setValues({...values,error: data.error, success: false})
-            }else{
+                setValues({...values, error: data.error, success: false})
+            } else{
                 setValues({
                     ...values,
                     name:'',
@@ -41,7 +42,7 @@ const UserSignUp = () => {
                 })
             }
 
-        })
+        })*/
     }
 
 
@@ -99,9 +100,10 @@ const UserSignUp = () => {
             className="container col-md-8 offset-md-2"
         >
             {showSuccess()}
-            {showError() }
+            
             {signUpForm()}
-            {JSON.stringify(values)}
+            {showError() }
+            
         </Layout>
     )
 }

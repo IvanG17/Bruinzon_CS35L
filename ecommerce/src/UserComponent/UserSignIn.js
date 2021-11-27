@@ -24,15 +24,15 @@ const UserSignIn = () => {
 
     
     
-    const clickSubmit = (event) => {
+    const clickSubmit = event => {
         event.preventDefault()
-        setValues({...values, error:false, loading: true})
+        setValues({...values, error: false, loading: true})
         signin({email, password})
         .then(data => {
             if(data.error){
                 setValues({...values,error: data.error, 
                     loading: false})
-            }else{
+            } else{
                 setValues({
                     ...values,
                     redirectToReferrer: true
@@ -64,7 +64,7 @@ const UserSignIn = () => {
                 className="form-control"
                 value={password}></input>
             </div>
-            <button onClick= {clickSubmit} className="btn btn-primary">Sign Up</button>
+            <button onClick= {clickSubmit} className="btn btn-primary">Sign In</button>
         </form>
     );
 
@@ -90,13 +90,13 @@ const UserSignIn = () => {
 
     return (
         <Layout
-            title="Signup"
-            description="Sign up for Bruinzoqn!"
+            title="Signin"
+            description="Sign in in Bruinzoqn!"
             className="container col-md-8 offset-md-2"
         >
             {showLoading()}
-            {showError() }
             {signUpForm()}
+            {showError() }
             {redirectUser()}
             {JSON.stringify(values)}
         </Layout>
