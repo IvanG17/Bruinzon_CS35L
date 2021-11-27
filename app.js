@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookies = require('cookie-parser');
+const cors = retuire('cors')
 const dotenv = require('dotenv');
 const clientRouteAuth = require('./routes/authentication')
 const userRouteAuth = require('./routes/userdata')
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookies());
 app.use(validator());
+app.use(cors());
 
 // routes communication to routes folder
 app.use("/api", clientRouteAuth);
