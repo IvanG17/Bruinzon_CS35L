@@ -8,6 +8,7 @@ const clientRouteAuth = require('./routes/authentication')
 const userRouteAuth = require('./routes/userdata')
 const validator = require('express-validator')
 const productRoute = require('./routes/product')
+const itemRoute = require('./routes/item')
 
 const app = express()
 
@@ -24,7 +25,8 @@ app.use(validator());
 // routes communication to routes folder
 app.use("/api", clientRouteAuth);
 app.use("/api", userRouteAuth);
-app.use("/api", productRoute)
+app.use("/api", productRoute); 
+app.use("/api", itemRoute)
 
 
 const portAccess = process.env.PORT || 8000
