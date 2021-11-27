@@ -196,5 +196,13 @@ exports.listProductTypes = (req,res) => {
 
 }
 
+exports.photo =  (req, res, next) => {
+    if (req.item.photo.data) {
+        res.set('Content-Type',req.item.photo.contentType)
+        return res.send(req.item.photo.data)
+    }
+    return res.status(400).json({error:"Photo not found"})
+
+}
 
 
