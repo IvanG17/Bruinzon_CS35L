@@ -2,12 +2,12 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import Layout from '../CoreComponent/Layout'
 import {signup} from '../Auth/index'
+import {API} from '../config.js'
 
 
 const UserSignUp = () => {
-
     const [values, setValues] = useState({
-        name:'',
+        name: '',
         email:'',
         password:'',
         error:'',
@@ -105,5 +105,6 @@ const UserSignUp = () => {
         </Layout>
     )
 }
+
 
 export default UserSignUp
