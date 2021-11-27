@@ -9,7 +9,6 @@ const {isValidAdminUser} = require("../controls/authentication");
 const {findUser} = require('../controls/userdata');
 
 
-
 router.post("/item/create/:userID", signinrequired, isValidAuthUser, isValidAdminUser, create)
 
 
