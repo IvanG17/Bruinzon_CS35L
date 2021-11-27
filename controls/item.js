@@ -4,6 +4,21 @@ const fs = require('fs')
 const Item = require('../design/item');
 const { errorHandler } = require('../design/error_handling')
 
+exports.del = (req, res) => {
+    let itemID = req.item; 
+    itemID.remove((err, rem) => {
+        if (err){
+            return res.status(400).json({
+                error: errorHandler(err)
+            })
+        }
+        res.json({
+        
+            success : "removed"
+        });
+    });
+};
+
 exports.findItem = (req, res, next, id) => {
     Item.findById(id).exec((err, item) =>{
         if (err){
