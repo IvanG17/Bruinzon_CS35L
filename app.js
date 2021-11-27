@@ -4,9 +4,10 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookies = require('cookie-parser');
 const dotenv = require('dotenv');
-const clientRoute = require('./routes/client')
+const clientRouteAuth = require('./routes/authentication')
+const userRouteAuth = require('./routes/userdata')
 const validator = require('express-validator')
-
+const productRoute = require('./routes/product')
 
 const app = express()
 
@@ -21,7 +22,9 @@ app.use(cookies());
 app.use(validator());
 
 // routes communication to routes folder
-app.use("/api", clientRoute);
+app.use("/api", clientRouteAuth);
+app.use("/api", userRouteAuth);
+app.use("/api", productRoute)
 
 
 const portAccess = process.env.PORT || 8000
@@ -37,9 +40,6 @@ mongoose.connect(
     {useNewUrlParser: true}
   )
   .then(() => console.log('DB Connected'))
-
-
-  
 
 
   mongoose.connection.on('error', err => {

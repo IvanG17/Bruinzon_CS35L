@@ -1,4 +1,4 @@
-const client = require('../design/client');
+const client = require('../design/userdata');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 const { errorHandler } = require('../design/error_handling')
@@ -8,9 +8,6 @@ exports.signup = (req, res) => {
     const customer = new client(req.body)
     customer.save((err, customer) => {
         if (err){
-            //return res.status(400).json({err});
-            //console.log("fail")
-           // return res.status(400).json({err: errorHandler(err)});
            return res.status(400).json({err});
         }
         res.json({
@@ -19,12 +16,9 @@ exports.signup = (req, res) => {
     });
 };
 
-// exports.trial = (req, res) => {
-//     res.json({message: "hello"}); 
-// };
-
-
-
+exports.trial = (req, res) => {
+    res.json({message: "hello"});
+};
 
 exports.signin = (req, res) => {
     const {email, password} = req.body
@@ -40,10 +34,39 @@ exports.signin = (req, res) => {
         }
     
 
-        const token = jwt.sign({_id: customer._id}, process.env.JWT_ID);
+        const token = jwt.sign({_id: customer._id}, process.env.JWT_SECRET);
         res.cookie('token', token, {expire: new Date() + 9999})
 
         const {_id, name, email, role} = customer;
         return res.json({token, customer: {_id, email , name , role}});
     });
 };
+
+exports.signout = (req,res) => {
+    res.clearCookie('token');
+    res.json({message:'User successfully signed out'});
+};
+
+const secretstring = process.env.JWT_SECRET || 'abc';
+exports.signinrequired = expressJwt({
+        secret: secretstring,
+        algorithms: ['HS256'],
+        userProperty: 'auth'
+    }
+);
+
+exports.isValidAuthUser = (req,res,next) => {
+    let check = req.profile && req.auth && req.profile._id == req.auth._id;
+    if (!check) {
+        return res.status(403).json({error:'You are not authorised to view this!'});
+    }
+    next();
+};
+
+exports.isValidAdminUser = (req,res,next) => {
+    if (req.profile.role === 0) {
+        return res.status(403).json({error:'Not a valid admin user, access denied'});
+    }
+    next();
+};
+
