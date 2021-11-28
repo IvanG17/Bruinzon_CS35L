@@ -40,7 +40,7 @@ const UserSignIn = () => {
                         setValues({
                             ...values,
                             redirectToReferrer: true
-                        })
+                        });
                     }
                 )
             }
