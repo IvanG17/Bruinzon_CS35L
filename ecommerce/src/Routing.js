@@ -4,7 +4,9 @@ import UserSignUp from './UserComponent/UserSignUp'
 import UserSignIn from './UserComponent/UserSignIn'
 import HomePage from './CoreComponent/HomePage'
 import PrivateRoute from './Auth/PrivateRoute'
+import AdminRoute from './Auth/AdminRoute'
 import UserDashboard from './UserComponent/UserDashboard'
+import AdminDashboard from './UserComponent/AdminDashboard'
 
 const Routing  = () => {
     return (<div>
@@ -13,7 +15,8 @@ const Routing  = () => {
                 <Route path="/" exact component={HomePage} />
                 <Route path="/signin" exact component={UserSignIn} />
                 <Route path="/signup" exact component={UserSignUp} />
-                <PrivateRoute path="/dashboard" exact component={UserDashboard} />
+                <PrivateRoute path="/user/dashboard" exact component={UserDashboard} />
+                <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
                 
             </Switch>
         </BrowserRouter>

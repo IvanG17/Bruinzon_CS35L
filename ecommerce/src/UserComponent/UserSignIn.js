@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Redirect} from 'react-router-dom'
 import Layout from '../CoreComponent/Layout'
-import {signin, authenticate} from '../Auth/index'
+import {signin, authenticate, isAuthenticated} from '../Auth/index'
 
 
 const UserSignIn = () => {
@@ -16,6 +16,7 @@ const UserSignIn = () => {
     });
 
     const {email, password, loading, error, redirectToReferrer} = values
+    const { customer } = isAuthenticated()
 
     const handleChange = name => event =>{
         setValues({...values, error:false,
@@ -89,9 +90,17 @@ const UserSignIn = () => {
 
     const redirectUser = () => {
         if(redirectToReferrer){
+            if(customer && customer.role === 1){
+                return <Redirect to="/admin/dashboard"/>
+            } else{
+                return <Redirect to="/user/dashboard"/>
+            }
+        }
+        if(isAuthenticated()){
             return <Redirect to="/"/>
         }
     }
+
     
 
     return (
@@ -104,7 +113,7 @@ const UserSignIn = () => {
             {signUpForm()}
             {showError() }
             {redirectUser()}
-            {JSON.stringify(values)}
+            
         </Layout>
     )
 }

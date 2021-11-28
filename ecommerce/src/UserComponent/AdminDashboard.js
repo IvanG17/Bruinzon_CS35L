@@ -3,22 +3,25 @@ import Layout from '../CoreComponent/Layout'
 import {isAuthenticated} from '../Auth'
 import {Link} from "react-router-dom"
 
-const UserDashboard = () => {
+const AdminDashboard = () => {
 
     const {customer: {_id, name, email, role}} = isAuthenticated();
 
-    const userLinks = () => {
+    const adminLinks = () => {
         return (
             <div className = "card">
                 <h4 className="card-header">
-                    User Links
+                    Admin Links
                 </h4>
                 <ul className = "list-group">
                     <li className = "list-group-item">
-                        <Link className = "nav-link" to="/cart">My Cart</Link>
+                        <Link className = "nav-link" to="/create/category">Create Category</Link>
                     </li>
                     <li className = "list-group-item">
-                        <Link className = "nav-link" to="/profile/update">Update Profile</Link>
+                        <Link className = "nav-link" to="/create/product">Create Product</Link>
+                    </li>
+                    <li className = "list-group-item">
+                        <Link className = "nav-link" to="/user/dashboard">User View</Link>
                     </li>
                    
                 </ul>
@@ -26,7 +29,7 @@ const UserDashboard = () => {
         )
     }
 
-    const userInfo = () => {
+    const adminInfo = () => {
         return (
             <div className="card mb-5">
                 <h3 className = "card-header">User Information</h3>
@@ -39,16 +42,7 @@ const UserDashboard = () => {
         )
     }
 
-    const purchaseHistory = () => {
-        return (
-            <div className="card">
-                <h3 className = "card-header">Purchase History</h3>
-                <ul className = "list-group">
-                    <li className = "list-group-item">history</li>
-                </ul>
-            </div>
-        )
-    }
+    
 
     return (
         <Layout
@@ -57,11 +51,11 @@ const UserDashboard = () => {
             className="container-fluid">
             <div className="row">
                 <div className = "col-3">
-                    {userLinks()}
+                    {adminLinks()}
                 </div>
                 <div className = "col-9">
-                    {userInfo()}
-                    {purchaseHistory()}
+                    {adminInfo()}
+                    
                 </div>
             </div>
 
@@ -69,4 +63,4 @@ const UserDashboard = () => {
     )
 }
 
-export default UserDashboard;
+export default AdminDashboard;
