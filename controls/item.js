@@ -196,5 +196,55 @@ exports.listProductTypes = (req,res) => {
 
 }
 
+exports.photo =  (req, res, next) => {
+    if (req.item.photo.data) {
+        res.set('Content-Type',req.item.photo.contentType)
+        return res.send(req.item.photo.data)
+    }
+    return res.status(400).json({error:"Photo not found"})
+
+}
+
+exports.getSearched = (req,res) => {
+
+    let order = req.body.order ? req.body.order : 'desc';
+    let sortwith = req.body.sortwith ? req.body.sortwith : '_id';
+    let max = req.body.max ? parseInt(req.body.max) : 6;
+
+    let skipitem = req.body.skip ? parseInt(req.body.skip) : 0; // So only 6 load initially and we can send more
+    let itemArray = {};
+
+    for (let key in req.body.queries) {
+        if (req.body.queries[key].length > 0) {
+            if (key === "price") {
+                itemArray[key] = {
+                    $gte: req.body.filters[key][0],
+                    $lte: req.body.filters[key][1]
+                };
+            }
+            else {
+                itemArray[key] = req.body.filters[key];
+            }
+        }
+    }
+
+    Item.find(itemArray)
+        .select("-photo") // We don't want to return the photos, huge file size
+        .populate('productType')
+        .sort([[sortwith, order]])
+        .skip(skipitem)
+        .limit(max)
+        .exec((err,data) => {
+            if (err) {
+                return res.status(400).json({error:err})
+            }
+            res.json({
+                size: data.length,
+                data
+            })
+        })
+
+}
+
 
 

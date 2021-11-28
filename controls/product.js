@@ -82,4 +82,11 @@ exports.findProduct = (req, res, next, objID) => {
     });
 }
 
-
+/*
+exports.photo =  (req, res, next) => {
+    if (req.item.photo.data) {
+        res.set('Content-Type',req.item.photo.contentType)
+        return res.send(req.item.photo.data)
+    }
+}
+ */
