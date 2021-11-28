@@ -209,7 +209,7 @@ exports.getSearched = (req,res) => {
 
     let order = req.body.order ? req.body.order : 'desc';
     let sortwith = req.body.sortwith ? req.body.sortwith : '_id';
-    let max = req.body.max ? parseInt(req.body.max) : 6;
+    let max = req.body.max ? parseInt(req.body.max) : 50;
 
     let skipitem = req.body.skip ? parseInt(req.body.skip) : 0; // So only 6 load initially and we can send more
     let itemArray = {};
