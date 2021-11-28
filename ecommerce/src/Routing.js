@@ -13,8 +13,8 @@ const Routing  = () => {
                 <Route path="/" exact component={HomePage} />
                 <Route path="/signin" exact component={UserSignIn} />
                 <Route path="/signup" exact component={UserSignUp} />
-                <Route path="/dashboard" exact compoent={UserDashboard} />
-                /* TODO: CHANGE THIS TO PrivateRoute */
+                <PrivateRoute path="/dashboard" exact component={UserDashboard} />
+                
             </Switch>
         </BrowserRouter>
     </div>)
