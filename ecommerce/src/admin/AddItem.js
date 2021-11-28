@@ -6,7 +6,7 @@ import {createItem} from './backend'
 
 const AddItem = () => {
 
-    const {user, token} = isAuthenticated();
+
     const [values, setValues] = useState ({
         name: '',
         description: '',
@@ -18,11 +18,12 @@ const AddItem = () => {
         photo: '',
         loading: false,
         error: '',
-        createdProduct: '',
+        createdItem: '',
         redirectToProfile: false,
         formData: ''
     });
 
+    const {user, token} = isAuthenticated();
     const {
         name,
         description,
@@ -34,7 +35,7 @@ const AddItem = () => {
         photo,
         loading,
         error,
-        createdProduct,
+        createdItem,
         redirectToProfile,
         formData
     } = values;
@@ -50,7 +51,26 @@ const AddItem = () => {
     }
 
     const clickSubmit = event => {
+        event.preventDefault()
+        setValues({...values, error: '', loading: true})
 
+        createItem(user._id, token, formData)
+            .then(data => {
+                if (data.error) {
+                    setValues({...values, error: data.error})
+                } else {
+                    setValues({
+                        ...values,
+                        name: '',
+                        description: '',
+                        photo: '',
+                        price: '',
+                        quantity: '',
+                        loading: false,
+                        createdItem: data.name
+                    });
+                }
+            });
     }
 
     const uploadForm = () => (
