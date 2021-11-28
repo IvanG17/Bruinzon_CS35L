@@ -30,8 +30,8 @@ const UserSignIn = () => {
         signin({email, password})
         .then(data => {
 
-            /* TODO: Correct the error here, right now I did this to avoid checking error */
-            if(/*data.error*/ false){
+            
+            if(data.error){
                 setValues({...values,error: data.error, 
                     loading: false})
             }else{
