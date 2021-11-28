@@ -7,8 +7,10 @@ const Layout = ({title = 'Title',
                     children
 }) => (
 
-    <div >
+
+    <div>
         <MenuPage />
+
         <div className="jumbotron">
             <h2>{title}</h2>
             <p className="lead">{description}</p>

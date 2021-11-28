@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import { Link, withRouter } from 'react-router-dom'
-/* import { Navbar, Nav, Container } from 'react-bootstrap' */
+import {logout, isAuthenticated} from '../Auth'
+
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
@@ -13,17 +14,54 @@ const isActive = (history, path) => {
 const MenuPage = ({history}) => {
     return (<div>
         <ul className = "nav nav-tabs bg-primary">
+
+
             <li className = "nav-item" >
-                <Link className="nav-link" style = {isActive(history, '/')} to="/">Home</Link>
+                <Link className="nav-link"
+                      style = {isActive(history, '/')}
+                      to="/">
+                    Home
+                </Link>
             </li>
 
-            <li className = "nav-item">
-                <Link className="nav-link" style = {isActive(history, '/signin')} to="/signin">Signin</Link>
+            <li className = "nav-item" >
+                <Link className="nav-link"
+                      style = {isActive(history, '/dashboard')}
+                      to="/dashboard"
+                >
+                    Dashboard
+                </Link>
             </li>
 
-            <li className = "nav-item">
-                <Link className="nav-link" style = {isActive(history, '/signup')} to="/signup">Signup</Link>
-            </li>
+            {!isAuthenticated() && (
+                <Fragment>
+                    <li className = "nav-item">
+                        <Link className="nav-link" style = {isActive(history, '/signin')} to="/signin">Signin</Link>
+                    </li>
+
+                    <li className = "nav-item">
+                        <Link className="nav-link" style = {isActive(history, '/signup')} to="/signup">Signup</Link>
+                    </li>
+                </Fragment>
+            )}
+
+            {isAuthenticated() && (
+                <li className = "nav-item">
+                <span className="nav-link"
+                      style ={{cursor: 'pointer', color: '#ffffff'}}
+                      onClick ={() => logout(() => {
+                          history.push("/");
+                      })
+                      }
+                >
+                    Logout
+                </span>
+                </li>
+            )}
+
+
+
+
         </ul>
     </div>)
 }

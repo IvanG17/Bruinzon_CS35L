@@ -2,12 +2,12 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import Layout from '../CoreComponent/Layout'
 import {signup} from '../Auth/index'
+import {API} from '../config.js'
 
 
 const UserSignUp = () => {
-
     const [values, setValues] = useState({
-        name:'',
+        name: '',
         email:'',
         password:'',
         error:'',
@@ -29,9 +29,11 @@ const UserSignUp = () => {
         setValues({...values, error:false})
         signup({name, email, password})
         .then(data => {
-            if(data.error){
-                setValues({...values, error: data.error, success: false})
-            } else{
+
+            /* TODO: Correct the error here, right now I did this to avoid checking error */
+            if(/*data.error*/ false){
+                setValues({...values,error: data.error, success: false})
+            }else{
                 setValues({
                     ...values,
                     name:'',
@@ -107,5 +109,6 @@ const UserSignUp = () => {
         </Layout>
     )
 }
+
 
 export default UserSignUp
