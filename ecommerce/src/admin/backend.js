@@ -17,3 +17,20 @@ export const createProduct = (userID, token, productName) => {
     .catch(err => {console.log(err);
     })
 }
+
+export const createItem = (userID, token, item) => {
+    return fetch(`${API}/item/create/${userID}`, {
+        method: "POST",
+        headers:{
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: item
+
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {console.log(err);
+        })
+}
