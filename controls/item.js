@@ -59,6 +59,12 @@ exports.create = (req, res) => {
         // name, description, price, productType, quantity, photo, validShipping
         const {name, description, price, productType, quantity, validShipping} = fields;
         if (!name || !description || !price || !productType || !quantity || !validShipping) {
+            console.log(name)
+            console.log(description)
+            console.log(price)
+            console.log(productType)
+            console.log(quantity)
+            console.log(validShipping)
             return res.status(400).json({
                 error : "All required fields have not been filled in"
             })

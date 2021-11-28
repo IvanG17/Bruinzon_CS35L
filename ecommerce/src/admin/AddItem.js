@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Layout from '../CoreComponent/Layout'
 import {isAuthenticated} from '../Auth'
 import {Link} from "react-router-dom"
-import {createItem} from './backend'
+import {createItem, getProducts} from './backend'
 
 const AddItem = () => {
 
@@ -12,8 +12,8 @@ const AddItem = () => {
         description: '',
         price: '',
         products: [],
-        product: '',
-        shipping: '',
+        productType: '',
+        validShipping: '',
         quantity: '',
         photo: '',
         loading: false,
@@ -23,14 +23,14 @@ const AddItem = () => {
         formData: ''
     });
 
-    const {user, token} = isAuthenticated();
+    const {customer, token} = isAuthenticated();
     const {
         name,
         description,
         price,
         products,
-        product,
-        shipping,
+        productType,
+        validShipping,
         quantity,
         photo,
         loading,
@@ -40,8 +40,19 @@ const AddItem = () => {
         formData
     } = values;
 
+    // Loading products
+    const init = () => {
+        getProducts().then(data => {
+            if(data.error) {
+                setValues({...values, error: data.error})
+            } else {
+                setValues({...values, products: data, formData: new FormData()})
+            }
+        })
+    }
+
     useEffect(() => {
-        setValues({...values, formData: new FormData()})
+        init();
     }, [])
 
     const handleChange = name => event => {
@@ -52,10 +63,10 @@ const AddItem = () => {
 
     const clickSubmit = event => {
         event.preventDefault()
+        console.log(values)
         setValues({...values, error: '', loading: true})
 
-        createItem(user._id, token, formData)
-            .then(data => {
+        createItem(customer._id, token, formData).then(data => {
                 if (data.error) {
                     setValues({...values, error: data.error})
                 } else {
@@ -110,18 +121,20 @@ const AddItem = () => {
 
             <div className="form-group">
                 <label className="text-muted">Product</label>
-                <select onChange={handleChange('product')}
-                       className="form-control">
-                    <option value = "to_be_decided">Product A</option>
-                    <option value = "to_be_decided">Product B</option>
-                    <option value = "to_be_decided">Product C</option>
+                <select onChange={handleChange('productType')}
+                        className="form-control">
+                    <option>Please Select</option>
+                    {products && products.map((p, i) => (<option key = {i} value={p._id}>
+                        {p.name}
+                    </option>))}
                 </select>
             </div>
 
             <div className="form-group">
                 <label className="text-muted">Shipping</label>
-                <select onChange={handleChange('shipping')}
+                <select onChange={handleChange('validShipping')}
                         className="form-control">
+                    <option>Please Select</option>
                     <option value = "0">No Shipping</option>
                     <option value = "1">Yes Shipping</option>
                 </select>
@@ -140,7 +153,24 @@ const AddItem = () => {
         </form>
     );
 
-    const {} = values
+
+    const showError = () => (
+        <div className = "laert alert-danger" style={{display: error ? '' : 'none'}}>
+            {error}
+        </div>
+    );
+
+    const showSuccess = () => (
+        <div className = "alert alert-info" style={{display: createdItem ? '' : 'none'}}>
+            <h2>{`${createdItem}`} is created!</h2>
+        </div>
+    );
+
+    const showLoading = () => (
+        loading && (<div className="alert alert-success">
+            <h2>Loading...</h2>
+        </div>)
+    );
 
     return (
         <Layout
@@ -149,6 +179,9 @@ const AddItem = () => {
             className="container-fluid">
             <div className="row">
                 <div className = "col-md-8 offset-md-2">
+                    {showLoading()}
+                    {showSuccess()}
+                    {showError()}
                     {uploadForm()}
                 </div>
             </div>
