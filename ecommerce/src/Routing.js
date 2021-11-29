@@ -9,6 +9,7 @@ import UserDashboard from './UserComponent/UserDashboard'
 import AdminDashboard from './UserComponent/AdminDashboard'
 import AddProduct from './admin/AddProduct'
 import AddItem from './admin/AddItem'
+import UserProfile from './UserComponent/UserProfile'
 
 const Routing  = () => {
     return (<div>
@@ -21,6 +22,7 @@ const Routing  = () => {
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
                 <AdminRoute path="/create/category" exact component={AddProduct} />
                 <AdminRoute path="/create/product" exact component={AddItem} />
+                <PrivateRoute path = "/profile/:customerId" exact component={UserProfile} />
                 
             </Switch>
         </BrowserRouter>
