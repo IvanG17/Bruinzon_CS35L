@@ -45,16 +45,20 @@ const HomePage = () => {
       <Search/>
       <h2 className="mb-4">New Arrivals</h2>
       <div className = "row">
-        {productsByArrival.map((item, i) => (<Card key = {i} product={item}/>
+        {productsByArrival.map((item, i) => (
+            <div key = {i} className="col-4 mb-3">
+                <Card product={item}/>
+            </div>
         ))}
       </div>
       <h2 className="mb-4">Best Sellers</h2>
       <div className = "row">
-        {productsBySell.map((item, i) => (<Card key = {i} product={item}/>
+        {productsBySell.map((item, i) => (
+            <div key = {i} className="col-4 mb-3">
+                <Card product={item}/>
+            </div>
         ))}
       </div>
-
-
     </Layout>
   )
 }
