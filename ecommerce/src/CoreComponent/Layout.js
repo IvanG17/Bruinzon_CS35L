@@ -11,7 +11,8 @@ const Layout = ({title = 'Title',
     <div>
         <MenuPage />
 
-        <div className="jumbotron">
+        <div className="jumbotron" class="p-3 mb-2 bg-warning text-dark" >
+   
             <h2>{title}</h2>
             <p className="lead">{description}</p>
         </div>
