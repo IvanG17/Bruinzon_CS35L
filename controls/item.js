@@ -111,12 +111,12 @@ exports.write = (req, res) => {
         }
 
         // name, description, price, productType, quantity, photo, validShipping
-        const {name, description, price, productType, quantity, validShipping} = fields;
-        if (!name || !description || !price || !productType || !quantity || !validShipping) {
-            return res.status(400).json({
-                error : "All required fields have not been filled in"
-            })
-        }
+        //const {name, description, price, productType, quantity, validShipping} = fields;
+        //if (!name || !description || !price || !productType || !quantity || !validShipping) {
+        //    return res.status(400).json({
+        //        error : "All required fields have not been filled in"
+        //    })
+        //}
 
 
         let item = req.item
