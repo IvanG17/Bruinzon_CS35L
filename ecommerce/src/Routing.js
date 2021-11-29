@@ -12,6 +12,7 @@ import AddItem from './admin/AddItem'
 import ShopPage from './CoreComponent/Shop'
 import ManageProducts from './admin/ManageProduct'
 import UpdateItem from './admin/UpdateItem'
+import Product from './CoreComponent/Product'
 
 const Routing  = () => {
     return (<div>
