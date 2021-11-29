@@ -22,7 +22,9 @@ exports.del = (req, res) => {
 };
 
 exports.findItem = (req, res, next, id) => {
-    Item.findById(id).exec((err, item) =>{
+    Item.findById(id)
+        .populate('productType')
+        .exec((err, item) =>{
         if (err){
             return res.status(400).json({
                 error: "Error finding item" 
