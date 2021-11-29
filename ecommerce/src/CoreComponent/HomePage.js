@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from './Layout'
 import {getProducts} from './ApiCore'
 import Card from './Card'
+import Search from './Search'
 
 const HomePage = () => {
   const [productsBySell, setProductsBySell] = useState([])
@@ -41,6 +42,7 @@ const HomePage = () => {
       description = "Bruinzon Platform"
       className = "container-fluid"
       >
+      <Search/>
       <h2 className="mb-4">New Arrivals</h2>
       <div className = "row">
         {productsByArrival.map((item, i) => (<Card key = {i} product={item}/>

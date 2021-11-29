@@ -6,7 +6,6 @@ const { errorHandler } = require('../design/error_handling')
 
 
 
-
 exports.del = (req, res) => {
     let itemID = req.item; 
     itemID.remove((err, rem) => {
@@ -208,6 +207,30 @@ exports.photo =  (req, res, next) => {
         return res.send(req.item.photo.data)
     }
     return res.status(400).json({error:"Photo not found"})
+
+}
+
+exports.listSearch = (req, res) => {
+    //create query object to hold search value and category value
+    const query = {}
+    //assign search value to query.name
+
+    if(req.query.search){
+        query.name={$regex: req.query.search, $options: 'i'}
+        //assign category value to query category
+        if(req.query.product && req.query.product != 'All'){
+            query.product = req.query.product
+        }
+        //find product based on query w/ 2 properties i.e search and category
+        Item.find(query, (err, item) => {
+            if(err){
+                return res.status(400).json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(item)
+        }).select("-photo");
+    }
 
 }
 
