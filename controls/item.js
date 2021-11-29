@@ -211,46 +211,88 @@ exports.photo =  (req, res, next) => {
 
 }
 
-exports.getSearched = (req,res) => {
+// exports.getSearched = (req,res) => {
 
-    let order = req.body.order ? req.body.order : 'desc';
-    let sortwith = req.body.sortwith ? req.body.sortwith : '_id';
-    let max = req.body.max ? parseInt(req.body.max) : 50;
+//     let order = req.body.order ? req.body.order : 'desc';
+//     let sortwith = req.body.sortwith ? req.body.sortwith : '_id';
+//     let max = req.body.max ? parseInt(req.body.max) : 50;
 
-    let skipitem = req.body.skip ? parseInt(req.body.skip) : 0; // So only 6 load initially and we can send more
-    let itemArray = {};
+//     let skipitem = req.body.skip ? parseInt(req.body.skip) : 0; // So only 6 load initially and we can send more
+//     let itemArray = {};
 
-    for (let key in req.body.queries) {
-        if (req.body.queries[key].length > 0) {
+//     for (let key in req.body.queries) {
+//         if (req.body.queries[key].length > 0) {
+//             if (key === "price") {
+//                 itemArray[key] = {
+//                     $gte: req.body.filters[key][0],
+//                     $lte: req.body.filters[key][1]
+//                 };
+//             }
+//             else {
+//                 itemArray[key] = req.body.filters[key];
+//             }
+//         }
+//     }
+
+//     Item.find(itemArray)
+//         .select("-photo") // We don't want to return the photos, huge file size
+//         .populate('productType')
+//         .sort([[sortwith, order]])
+//         .skip(skipitem)
+//         .limit(max)
+//         .exec((err,data) => {
+//             if (err) {
+//                 return res.status(400).json({error:err})
+//             }
+//             res.json({
+//                 size: data.length,
+//                 data
+//             })
+//         })
+
+// }
+
+
+exports.listBySearch = (req, res) => {
+    let order = req.body.order ? req.body.order : "desc";
+    let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+    let limit = req.body.limit ? parseInt(req.body.limit) : 100;
+    let skip = parseInt(req.body.skip);
+    let findArgs = {};
+ 
+    // console.log(order, sortBy, limit, skip, req.body.filters);
+    // console.log("findArgs", findArgs);
+ 
+    for (let key in req.body.filters) {
+        if (req.body.filters[key].length > 0) {
             if (key === "price") {
-                itemArray[key] = {
+                // gte -  greater than price [0-10]
+                // lte - less than
+                findArgs[key] = {
                     $gte: req.body.filters[key][0],
                     $lte: req.body.filters[key][1]
                 };
-            }
-            else {
-                itemArray[key] = req.body.filters[key];
+            } else {
+                findArgs[key] = req.body.filters[key];
             }
         }
     }
-
-    Item.find(itemArray)
-        .select("-photo") // We don't want to return the photos, huge file size
-        .populate('productType')
-        .sort([[sortwith, order]])
-        .skip(skipitem)
-        .limit(max)
-        .exec((err,data) => {
+ 
+    Item.find(findArgs)
+        .select("-photo")
+        .populate("productType")
+        .sort([[sortBy, order]])
+        .skip(skip)
+        .limit(limit)
+        .exec((err, data) => {
             if (err) {
-                return res.status(400).json({error:err})
+                return res.status(400).json({
+                    error: "Products not found"
+                });
             }
             res.json({
                 size: data.length,
                 data
-            })
-        })
-
-}
-
-
-
+            });
+        });
+};
