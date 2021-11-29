@@ -1,7 +1,7 @@
 import { API } from "../config";
 
-export const read = (userId, token) => {
-    return fetch(`${API}/user/${userId}`, {
+export const read = (userID, token) => {
+    return fetch(`${API}/userdata/${userID}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -10,9 +10,9 @@ export const read = (userId, token) => {
         }
     })
         .then(response => {
-            return repsonse.json();
+            return response.json();
         })
-        .catch(err=>console.log(err));
+        .catch(err => console.log(err));
 };
 
 export const update = (userId, token, user) => {
@@ -26,7 +26,7 @@ export const update = (userId, token, user) => {
         body: JSON.stringify(user)
     })
         .then(response => {
-            return repsonse.json();
+            return response.json();
         })
         .catch(err=>console.log(err));
 }

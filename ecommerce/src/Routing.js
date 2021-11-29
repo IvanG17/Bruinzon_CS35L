@@ -22,7 +22,7 @@ const Routing  = () => {
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
                 <AdminRoute path="/create/category" exact component={AddProduct} />
                 <AdminRoute path="/create/product" exact component={AddItem} />
-                <PrivateRoute path = "/profile/:customerId" exact component={UserProfile} />
+                <PrivateRoute path = "/profile/:userID" exact component={UserProfile} />
                 
             </Switch>
         </BrowserRouter>
