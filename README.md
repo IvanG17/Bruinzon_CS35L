@@ -2,11 +2,10 @@
 
 ### Distinct Features 
 * Ability for sellers to create new categories and items to sell to buyers 
-* Filter for specific items on the frontend 
+* Filter for specific items on the frontend based on price and category
 * Search bar to quickly locate a specific product on the backend 
 * After viewing the product, we recommend you to similar items that the store offers
-* A secure login for any new users
-
+* A secure login for any new users, and the ability to create accounts
 
 ### Steps for Running Bruinzon 
 
