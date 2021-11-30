@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Layout from '../CoreComponent/Layout'
 import {isAuthenticated} from '../Auth'
 import {Link} from "react-router-dom"
-import {getItem, getProducts, updateItem} from './backend'
+import {getItem, getItems, getProducts, updateItem} from './backend'
 
 const UpdateItem = ({match}) => {
 

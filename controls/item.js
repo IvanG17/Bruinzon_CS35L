@@ -159,7 +159,7 @@ exports.listItems = (req,res) => {
 
     let order = req.query.order ? req.query.order : 'asc';
     let sortwith = req.query.sortwith ? req.query.sortwith : '_id';
-    let max = req.query.max ? parseInt(req.query.max) : 6;
+    let max = req.query.max ? parseInt(req.query.max) : 99;
 
     Item.find()
         .select("-photo") // We don't want to return the photos, huge file size
