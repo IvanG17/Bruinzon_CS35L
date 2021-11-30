@@ -113,12 +113,12 @@ exports.write = (req, res) => {
         }
 
         // name, description, price, productType, quantity, photo, validShipping
-        const {name, description, price, productType, quantity, validShipping} = fields;
-        if (!name || !description || !price || !productType || !quantity || !validShipping) {
-            return res.status(400).json({
-                error : "All required fields have not been filled in"
-            })
-        }
+        //const {name, description, price, productType, quantity, validShipping} = fields;
+        //if (!name || !description || !price || !productType || !quantity || !validShipping) {
+        //    return res.status(400).json({
+        //        error : "All required fields have not been filled in"
+        //    })
+        //}
 
 
         let item = req.item
@@ -159,7 +159,7 @@ exports.listItems = (req,res) => {
 
     let order = req.query.order ? req.query.order : 'asc';
     let sortwith = req.query.sortwith ? req.query.sortwith : '_id';
-    let max = req.query.max ? parseInt(req.query.max) : 6;
+    let max = req.query.max ? parseInt(req.query.max) : 99;
 
     Item.find()
         .select("-photo") // We don't want to return the photos, huge file size

@@ -44,3 +44,66 @@ export const getProducts = () => {
         })
         .catch(err => {console.log(err)});
 }
+
+
+
+
+export const getItems = () => {
+    return fetch(`${API}/items?limit=undefined`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {console.log(err)});
+}
+
+export const deleteProduct = (itemId, userId, token) =>{
+    return fetch(`${API}/item/${itemId}/${userId}`,{
+        method: "DELETE",
+        headers:
+        {
+            Accept:"application/json",
+            "Content-Type":"application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const getItem = (productId) => {
+    return fetch(`${API}/item/${productId}`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {console.log(err)});
+}
+
+export const updateItem = (itemId, userId, token, product) =>{
+    return fetch(`${API}/item/${itemId}/${userId}`,{
+        method: "PUT",
+        headers:
+        {
+            Accept:"application/json",
+            //"Content-Type":"application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: product
+    })
+
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+
+
+
+
