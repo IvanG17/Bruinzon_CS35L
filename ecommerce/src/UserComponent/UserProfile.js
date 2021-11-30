@@ -102,7 +102,7 @@ const UserProfile = ({match}) => {
             <h2 className = "mb-4">Profile Update</h2>
             {profileUpdate(name, email, password)}
             {redirectUser(success)}
-            {JSON.stringify(values)}
+            
         </Layout>
     )
 };
