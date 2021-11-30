@@ -13,7 +13,7 @@ const isActive = (history, path) => {
 
 const MenuPage = ({history}) => {
     return (<div>
-        <ul className = "nav nav-tabs bg-primary">
+        <ul className = "nav nav-tabs bg-warning">
 
 
             <li className = "nav-item" >

@@ -38,8 +38,8 @@ const HomePage = () => {
 
   return (
     <Layout 
-      title = "HomePage" 
-      description = "Bruinzon Platform"
+      title = "Home" 
+      description = "Welcome to Bruinzon"
       className = "container-fluid"
       >
       <Search/>
