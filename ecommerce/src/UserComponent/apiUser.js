@@ -15,9 +15,9 @@ export const read = (userID, token) => {
         .catch(err => console.log(err));
 };
 
-export const update = (userId, token, user) => {
-    return fetch(`${API}/user/${userId}`, {
-        method: "POST",
+export const update = (userID, token, user) => {
+    return fetch(`${API}/userdata/${userID}`, {
+        method: "PUT",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -34,8 +34,10 @@ export const update = (userId, token, user) => {
 export const updateUser = (user, next) => {
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('jwt')) {
-            let auth = localStorage.getItem('jwt');
-            auth.user = user;
+            let auth = JSON.parse(localStorage.getItem('jwt'));
+            console.log(auth)
+            console.log(user)
+            auth.customer = user;
             localStorage.setItem('jwt', JSON.stringify(auth));
             next()
         }
