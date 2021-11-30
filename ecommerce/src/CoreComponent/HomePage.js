@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from './Layout'
+import Layout2 from './Layout2';
 import {getProducts} from './ApiCore'
 import Card from './Card'
 import Search from './Search'
@@ -37,12 +37,13 @@ const HomePage = () => {
   }, [])
 
   return (
-    <Layout 
+    <Layout2 
       title = "Home" 
-      description = "Welcome to Bruinzon"
+      description = "Bruinzon"
       className = "container-fluid"
       >
-      <Search/>
+        
+      <Search id="searchbar"/>
       <h2 className="mb-4">New Arrivals</h2>
       <div className = "row">
         {productsByArrival.map((item, i) => (
@@ -59,7 +60,7 @@ const HomePage = () => {
             </div>
         ))}
       </div>
-    </Layout>
+    </Layout2>
   )
 }
 
