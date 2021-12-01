@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from './Layout'
+import Layout2 from './Layout2';
 import {getProducts} from './ApiCore'
 import Card from './Card'
 import Search from './Search'
@@ -37,29 +37,46 @@ const HomePage = () => {
   }, [])
 
   return (
-    <Layout 
-      title = "HomePage" 
-      description = "Bruinzon Platform"
+    <Layout2 
+      title = "Home" 
+      description = "Bruinzon"
       className = "container-fluid"
       >
-      <Search/>
-      <h2 className="mb-4">New Arrivals</h2>
+      <blockquote class="blockquote text-center">
+  <p class="mb-0">The products on Bruinzon drop as hard as Randall dropped my mental health.</p>
+  <footer class="blockquote-footer">Student <cite title="Source Title">CS 35L</cite></footer>
+</blockquote>
+<hr/>
+      <Search id="searchbar"/>
+      <div id="container3"></div>
+      <img src="https://www.uclastore.com/site/img/Headers/Slider-Holiday-DESKTOP.jpg"></img>
+      <div  id="container3"></div>
+      <hr/>
+
+      <h2 className="mb-4" id="text4">New Arrivals</h2>
+      <div class="mb-4" id="container4"></div>
       <div className = "row">
         {productsByArrival.map((item, i) => (
-            <div key = {i} className="col-4 mb-3">
+            <div key = {i} className="col-3 mb-3">
                 <Card product={item}/>
             </div>
         ))}
       </div>
-      <h2 className="mb-4">Best Sellers</h2>
+      <div id="container3"></div>
+      <img src="https://ns.asucla.ucla.edu/site/img/homepage/threads-carousel-home-nike2.jpg" width ="1411"></img>
+      <div  id="container3"></div>
+      <hr/>
+      <div id="container3"></div>
+      <h2 className="mb-4 mt-4" id="text4">Best Sellers</h2>
+      <div id="container4" class="mb-4"></div>
       <div className = "row">
         {productsBySell.map((item, i) => (
-            <div key = {i} className="col-4 mb-3">
+            <div key = {i} className="col-3 mb-3">
                 <Card product={item}/>
             </div>
         ))}
       </div>
-    </Layout>
+    </Layout2>
   )
 }
 

@@ -9,10 +9,12 @@ import UserDashboard from './UserComponent/UserDashboard'
 import AdminDashboard from './UserComponent/AdminDashboard'
 import AddProduct from './admin/AddProduct'
 import AddItem from './admin/AddItem'
+
 import ShopPage from './CoreComponent/Shop'
 import ManageProducts from './admin/ManageProduct'
 import UpdateItem from './admin/UpdateItem'
 import Product from './CoreComponent/Product'
+import UserProfile from './UserComponent/UserProfile'
 
 const Routing  = () => {
     return (<div>
@@ -26,9 +28,12 @@ const Routing  = () => {
                 <AdminRoute path="/create/category" exact component={AddProduct} />
                 <AdminRoute path="/admin/item/update/:productId" exact component={UpdateItem} />
                 <AdminRoute path="/create/product" exact component={AddItem} />
+
                 <AdminRoute path="/admin/products" exact component={ManageProducts} />
                 <Route path="/shop" exact component={ShopPage}/>
                 <Route path="/product/:productId" exact component={Product} />
+
+                <PrivateRoute path = "/profile/:userID" exact component={UserProfile} />
                 
             </Switch>
         </BrowserRouter>

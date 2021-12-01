@@ -188,7 +188,7 @@ const UpdateItem = ({match}) => {
 
     return (
         <Layout
-            title="Update a product"
+            title="Manage products"
             description= {"Update an item"}
             className="container-fluid">
             <div className="row">
