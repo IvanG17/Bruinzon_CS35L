@@ -3,7 +3,7 @@
 * Created by Rahul Chander, Ivan Guan, David Xiong, Matthew Yang
 
 
-### 
+### Detailed Description
 * Display Dynamic Data to the User
     * Sellers can dynamically update the products they are selling on the backend (price changes, name change, etc.), and the frontend ecommerce interface will display the changes to buyers, as products are pulled from server to the website
 
@@ -33,11 +33,13 @@
 * A secure login for any new users, and the ability to create accounts
 
 ### Steps for Running Bruinzon 
-
+#### Setting up repository on your local machine
 * git clone https://github.com/IvanG17/Bruinzon_CS35L.git
 * cd Bruinzon* 
-* npm install          (this will install node dependencies for the backend) 
+#### Starting the backend
+* npm install       
 * node app.js 
+#### Starting the frontend
 * cd ecommerce 
 * npm install 
 * npm start
