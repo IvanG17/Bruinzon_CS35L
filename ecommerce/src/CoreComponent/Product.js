@@ -39,7 +39,8 @@ const Product = (props) => {
     return (
         <Layout
             title ={product && product.name}
-            description ={product && product.description && product.description.substring(0,100)}
+           // description ={product && product.description && product.description.substring(0,100)}
+           description = {product && product.name  && product.name.substring(0,100) }
             className = "container-fluid"
         >
 

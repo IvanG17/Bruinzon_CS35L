@@ -6,6 +6,8 @@ import Checklist from './Checklist'
 import {prices} from './Prices'
 import PriceButton from './PriceButton'
 import {filterItem} from './ApiCore'
+import Layout3 from './Layout3'
+
 
 
 
@@ -107,13 +109,14 @@ const ShopPage = () => {
     
 
     return (
-        <Layout 
+        <Layout3
           title = "Shop Page" 
           description = "Bruinzon Shop"
           className = "container-fluid"
           >
         <div className ="row">
-            <div className = 'col-4'>
+        
+            <div className = 'col-4' >
             <h4>See specific items with types</h4>
                 <ul>
               
@@ -129,10 +132,11 @@ const ShopPage = () => {
                 <PriceButton prices = {prices} itemFilter={ filters =>itemFilter(filters, 'price')}/>
                 
                 </div>
+               
             </div>
-            <div className = 'col-8'>
+            <div className = 'col-8' >
                <h2 className="mb-4">Available Products</h2>
-               <div className="row">
+               <div className="row" >
                         {filteredRes.map((product, i) => (
                             <div key = {i} className="col-4 mb-3">
                                 <Card product={product}/>
@@ -146,7 +150,7 @@ const ShopPage = () => {
         </div>
           
     
-        </Layout>
+        </Layout3>
       )
 }
 
