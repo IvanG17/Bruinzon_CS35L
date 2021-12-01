@@ -148,7 +148,7 @@ const AddItem = () => {
                        value={quantity} />
             </div>
 
-            <button className="btn btn-outline-primary">Create Product</button>
+            <button className="btn btn-outline-primary">Create Item</button>
 
         </form>
     );

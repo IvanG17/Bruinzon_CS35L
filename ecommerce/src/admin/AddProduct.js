@@ -38,14 +38,14 @@ const AddProduct = () => {
     const newProductForm = () => (
         <form onSubmit={clickSubmit}> 
             <div className="form-group">
-                <label className = 'text-muted'>Product Name</label>
+                <label className = 'text-muted'>Category Name</label>
                 <input type= "text" className="form-control" onChange ={handleChange} value={name} autoFocus/>
 
                
 
 
             </div>
-            <button className='btn btn-outline-primary'>Create Product Type</button>
+            <button className='btn btn-outline-primary'>Create Category</button>
         </form>
     )
 
@@ -62,8 +62,8 @@ const AddProduct = () => {
     }
     return (
         <Layout
-            title="Add a product type"
-            description= {"Create a product now"}
+            title="Add a Category"
+            description= {"Create a category now"}
             className="container-fluid">
             <div className="row">
     
