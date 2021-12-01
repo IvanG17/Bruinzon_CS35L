@@ -45,7 +45,7 @@ const HomePage = () => {
       
       <blockquote class="blockquote text-center">
   <p class="mb-0">The products on Bruinzon drop as hard as Randall dropped my mental health.</p>
-  <footer class="blockquote-footer">Student <cite title="Source Title">CS 35L</cite></footer>
+  <footer class="blockquote-footer">Student, <cite title="Source Title">CS 35L</cite></footer>
 </blockquote>
 <hr/>
       <Search id="searchbar"/>

@@ -1,7 +1,9 @@
 import React from 'react'
 import Layout from '../CoreComponent/Layout'
+import Layout3 from '../CoreComponent/Layout3'
 import {isAuthenticated} from '../Auth'
 import {Link} from "react-router-dom"
+import {trim} from "lodash";
 
 const UserDashboard = () => {
 
@@ -53,7 +55,7 @@ const UserDashboard = () => {
     return (
         <Layout
             title="Dashboard"
-            description= {`Welcome ${name}`}
+            description= {`${name}'s Dashboard`}
             className="container-fluid">
             <div className="row">
                 <div className = "col-3">

@@ -24,7 +24,7 @@ const Layout3 = ({title = 'Title',
                 
                 
                 
-                <p id="text6" className="display-1">{description}</p>
+                <p id="text6" className="display-1 center">{description}</p>
             </div>
         <div id="container2"></div>
 
