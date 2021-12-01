@@ -107,7 +107,7 @@ const UserSignIn = () => {
     return (
         <Layout
             title="Signin"
-            description="Sign in to your Bruinzoqn account!"
+            description="Sign in to your account"
             className="container col-md-8 offset-md-2"
         >
             {showLoading()}

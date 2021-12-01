@@ -14,7 +14,7 @@ const Layout2 = ({title = 'Title',
         <MenuPage />
         
         
-            
+        
             <div id="container">
                 
                 <img id= "image" 

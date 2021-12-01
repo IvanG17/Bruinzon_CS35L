@@ -58,7 +58,16 @@ img {
 
 #container {
     background: #FFD100;
-    height: 400px;
+    height: 230px;
+    width: 100%;
+    
+    position: relative;
+    object-fit: cover;
+    overflow: hidden;
+  }
+  #container5 {
+    background: #FFD100;
+    height: 250px;
     width: 100%;
     
     position: relative;
@@ -74,6 +83,28 @@ img {
     object-fit: cover;
     overflow: hidden;
   }
+  .container2 img {
+    filter: brightness(40%);
+  }
+
+  #container3 {
+    background: #2774AE;
+    height: 60px;
+    width: 100%;
+    
+    position: relative;
+    object-fit: cover;
+    overflow: hidden;
+  }
+  #container4 {
+    background: #FFD100;
+    height: 30px;
+    width: 100%;
+    
+    position: relative;
+    object-fit: cover;
+    overflow: hidden;
+  }
   #image {
     
     position: relative;
@@ -81,6 +112,18 @@ img {
     top: 0;
     display:block;
     height: 650px;
+    width: 90%;
+    margin: auto;
+    display: block;
+    
+  }
+  #image2 {
+    
+    position: relative;
+    left:0;
+    bottom:250px;
+    display:block;
+    height: 700px;
     width: 90%;
     margin: auto;
     display: block;
@@ -109,5 +152,21 @@ img {
     top: 87px;
   }
   #text3{
-      font-weight:bold;
+    font-weight:bold;
+  }
+  #text4{
+      
+    font-weight:lighter;
+    text-align: center;
+    font-size:60px;
+}
+#text5 {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    font-size: 75px;
+    font:Verdana;
+    font-weight:lighter;
+    left: 400px;
+    top: 87px;
   }

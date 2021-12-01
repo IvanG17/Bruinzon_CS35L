@@ -15,7 +15,16 @@ const MenuPage = ({history}) => {
         
         <ul className = "nav nav-tabs bruincolor">
 
-            
+            <li>
+            <Link 
+                      style = {isActive(history, '/')}
+                      to="/">
+                <img  
+                    src={require('./images/logo3.png') }
+                    height="40" width="40" class="ml-2"
+                ></img>
+                </Link>
+            </li>
             <li className = "nav-item" >
                 <Link className="nav-link" id="text3"
                       style = {isActive(history, '/')}
