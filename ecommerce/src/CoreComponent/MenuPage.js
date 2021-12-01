@@ -20,7 +20,7 @@ const MenuPage = ({history}) => {
                       style = {isActive(history, '/')}
                       to="/">
                 <img  
-                    src={require('./images/logo3.png') }
+                    src={require('./Images/logo3.png') }
                     height="40" width="40" class="ml-2"
                 ></img>
                 </Link>
