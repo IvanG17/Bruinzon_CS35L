@@ -53,7 +53,7 @@ const Search = () => {
         if(searched && results.length > 1){
             return `Found ${results.length} products`
         }
-        if(searched && results.length == 1){
+        if(searched && results.length === 1){
             return `Found ${results.length} product`
         }
         if(searched && results.length < 1 ){

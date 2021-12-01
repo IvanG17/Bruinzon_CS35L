@@ -135,8 +135,13 @@ const ShopPage = () => {
                
             </div>
             <div className = 'col-8' >
-               <h2 className="mb-4">Available Products</h2>
-               <div className="row" >
+                
+                
+                
+                <div id="container2"></div>
+                <h2 id="shop-text" className="mb-4">Available Products</h2>
+                <div id="container4"></div>
+                <div className="row mt-5" >
                         {filteredRes.map((product, i) => (
                             <div key = {i} className="col-4 mb-3">
                                 <Card product={product}/>

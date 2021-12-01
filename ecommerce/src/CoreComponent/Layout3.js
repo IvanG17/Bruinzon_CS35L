@@ -15,7 +15,7 @@ const Layout3 = ({title = 'Title',
         
         
         
-            <div id="container">
+            <div class="container2" id="container5">
                 
             <img id= "image" 
                 src="https://asucla.ucla.edu/v2/wp-content/uploads/2021/01/Meyerhoff-Park-2-1-1.jpg"
@@ -24,7 +24,7 @@ const Layout3 = ({title = 'Title',
                 
                 
                 
-                <p id="text2" className="display-1">{description}</p>
+                <p id="text6" className="display-1">{description}</p>
             </div>
         <div id="container2"></div>
 

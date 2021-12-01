@@ -11,11 +11,28 @@ const isActive = (history, path) => {
 }
 
 const MenuPage = ({history}) => {
-    return (<div>
+    return (<div >
         
-        <ul className = "nav nav-tabs bruincolor">
+        <ul className = "bruincolor" id="listout">
 
-            <li>
+            <li className = "nav-item" id="listin" >
+            
+            <li className = "nav-item" id="listin">
+                <Link className="nav-link" 
+                      style = {isActive(history, '/')}
+                      to="/">
+                    Home
+                </Link>
+            </li>
+
+
+            <li className = "nav-item" id="listin">
+                <Link className="nav-link" 
+                      style = {isActive(history, '/shop')}
+                      to="/shop">
+                    Shop List
+                </Link>
+            </li>
             <Link 
                       style = {isActive(history, '/')}
                       to="/">
@@ -25,34 +42,17 @@ const MenuPage = ({history}) => {
                 ></img>
                 </Link>
             </li>
-            <li className = "nav-item" >
-                <Link className="nav-link" id="text3"
-                      style = {isActive(history, '/')}
-                      to="/">
-                    Home
-                </Link>
-            </li>
 
-
-            <li className = "nav-item" >
-                <Link className="nav-link" id="text3"
-                      style = {isActive(history, '/shop')}
-                      to="/shop">
-                    Shop List
-                </Link>
-            </li>
-
-
-            {isAuthenticated() && isAuthenticated().customer.role === 0 && (<li className = "nav-item" >
-                <Link className="nav-link" id="text3"
+            {isAuthenticated() && isAuthenticated().customer.role === 0 && (<li className = "nav-item" id="listin">
+                <Link className="nav-link" 
                       style = {isActive(history, '/dashboard')}
                       to="/user/dashboard"
                 >
                     Dashboard
                 </Link>
             </li>)}
-            {isAuthenticated() && isAuthenticated().customer.role === 1 && (<li className = "nav-item" >
-                <Link className="nav-link" id="text3"
+            {isAuthenticated() && isAuthenticated().customer.role === 1 && (<li className = "nav-item" id="listin">
+                <Link className="nav-link" 
                       style = {isActive(history, '/dashboard')}
                       to="/admin/dashboard"
                 >
@@ -62,18 +62,18 @@ const MenuPage = ({history}) => {
 
             {!isAuthenticated() && (
                 <Fragment>
-                    <li className = "nav-item">
-                        <Link className="nav-link" id="text3" style = {isActive(history, '/signin')} to="/signin">Signin</Link>
+                    <li className = "nav-item" id="listin">
+                        <Link className="nav-link"  style = {isActive(history, '/signin')} to="/signin">Signin</Link>
                     </li>
 
-                    <li className = "nav-item">
-                        <Link className="nav-link" id="text3" style = {isActive(history, '/signup')} to="/signup">Signup</Link>
+                    <li className = "nav-item" id="listin">
+                        <Link className="nav-link"  style = {isActive(history, '/signup')} to="/signup">Signup</Link>
                     </li>
                 </Fragment>
             )}
 
             {isAuthenticated() && (
-                <li className = "nav-item">
+                <li className = "nav-item" id="listin">
                 <span className="nav-link"
                       style ={{cursor: 'pointer', color: '#ffffff'}}
                       onClick ={() => logout(() => {
