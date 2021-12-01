@@ -30,7 +30,7 @@ const Card = ({product, showViewProductButton = true}) => {
     return (
             <div className="card" >
                 <div className="card-header">{product.name}</div>
-                <div className="card-body" class="p-3 mb-2 bg-warning text-dark">
+                <div className="card-body" >
                     <ShowImage item={product} url = "items"/>
                     <p className="lead mt-2">{product.description}</p>
                     <p>${product.price}</p>
