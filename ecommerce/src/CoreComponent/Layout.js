@@ -21,7 +21,7 @@ const Layout = ({title = 'Title',
                 ></img>
                 
                 
-                <p id="text5" className="display-1">{description}</p>
+                <p id="text5" className="display-1 centertext">{description}</p>
             </div>
         <div id="container2"></div>
 

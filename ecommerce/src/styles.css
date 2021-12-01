@@ -3,6 +3,29 @@
 * product image
 **/
 
+#listout {
+    text-align: center;
+    vertical-align: center;
+    height: 60px;
+    z-index: 200;
+    position: fixed;
+    width: 100%;
+    }
+    
+#listin {
+    margin-top: 3px;
+    display: inline-block;
+    font-size: 20px;
+    
+    
+    }
+
+#bar{
+    margin-left: auto; 
+    margin-right: 0;
+}
+
+
 .btn,
 .jumbotron,
 .nav :hover {
@@ -19,6 +42,13 @@
     margin-right: auto;
     width: 50%;
   }
+
+.centertext {
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+
 .bruincolor{
     background-color: #2774AE;
 }
@@ -55,10 +85,14 @@ img {
     
 }
 
-
+#content{
+    margin-top: 100px;
+    z-index: 200;
+    position: absolute;
+}
 #container {
     background: #FFD100;
-    height: 230px;
+    height: 600px;
     width: 100%;
     
     position: relative;
@@ -98,6 +132,18 @@ img {
   }
   #container4 {
     background: #FFD100;
+    height: 30px;
+    width: 100%;
+    
+    position: relative;
+    object-fit: cover;
+    overflow: hidden;
+  }
+  #container6 {
+    position: absolute;
+    z-index: 100;
+    top:40px;
+    background: #ffffff;
     height: 30px;
     width: 100%;
     
@@ -149,7 +195,31 @@ img {
     font:Verdana;
     font-weight:lighter;
     left: 400px;
-    top: 87px;
+    top: 125px;
+  }
+  #text2-1 {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    background-color: white;
+    font-size: 25px;
+    font:Verdana;
+    
+    font-weight:lighter;
+    left: 695px;
+    top: 163px;
+  }
+  #text2-2 {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    background-color: white;
+    font-size: 25px;
+    font:Verdana;
+    
+    font-weight:lighter;
+    left: 0px;
+    top: 163px;
   }
   #text3{
     font-weight:bold;
@@ -168,5 +238,35 @@ img {
     font:Verdana;
     font-weight:lighter;
     left: 400px;
-    top: 87px;
+    top: 110px;
   }
+
+  #text6 {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    font-size: 75px;
+    font:Verdana;
+    font-weight:lighter;
+    left: 510px;
+    top: 110px;
+  }
+
+  #bear {
+      margin-left: 180px;
+      width: 500px;
+      height: 250px;
+  }
+
+  #shop-text {
+      font-weight: lighter;
+      font-size: 70px;
+      margin-top: 20px;
+      text-align: center;
+  }
+  #shop-text2 {
+    font-weight: lighter;
+    font-size: 50px;
+    margin-top: 20px;
+    text-align: center;
+}
