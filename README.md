@@ -35,7 +35,9 @@
 ### Steps for Running Bruinzon 
 #### Setting up repository on your local machine
 * git clone https://github.com/IvanG17/Bruinzon_CS35L.git
-* cd Bruinzon* 
+* cd Bruinzon*
+* Edit the .env in the main directory 
+   * Set MONGO_URI to your own MongoDB URI database link 
 #### Starting the backend
 * npm install       
 * node app.js 
